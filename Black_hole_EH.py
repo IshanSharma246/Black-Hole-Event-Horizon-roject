@@ -1,11 +1,10 @@
-
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.constants import G, c
 
 # Define constants and mass range
 M_sun = 1.989e30  # Solar mass in kg
-masses = np.linspace(1, 1e7, 30) * M_sun  # 1 to 10000000, 30 solar mass in kg
+masses = np.linspace(1, 1e7, 30) * M_sun  # 1 to 10M, 30 solar mass in kg
 a = 0.5  # Kerr spin parameter (dimensionless, 0 to 1, moderate spin)
 
 # Calculate Schwarzschild radius
@@ -28,8 +27,8 @@ Gaia_BH1_R_s = (2 * G * Gaia_BH1_mass) / (c ** 2) / 1000 # Schwarzschild in km
 plt.figure(figsize=(10, 6))  # Wide plot
 plt.plot(masses / M_sun, R_s_km, 'b-', label='Schwarzschild (Non-Rotating)')  # Blue line
 plt.plot(masses / M_sun, R_kerr_km, 'r--', label='Kerr (Rotating, a=0.5)')  # Red dashed line
-plt.scatter([15], cygnus_R_s, color='green', s=100, label='Cygnus X-1 (~15 M⊙)')  # Green dot
-plt.scatter([4e6], sgr_a_R_s, color='orange', s=100, label='Sgr A* (~4M M⊙)')  # Orange dot
+plt.scatter(15, cygnus_R_s, color='green', s=100, label='Cygnus X-1 (~15 M⊙)')  # Green dot
+plt.scatter(4e6, sgr_a_R_s, color='orange', s=100, label='Sgr A* (~4M M⊙)')  # Orange dot
 plt.scatter(9.26, Gaia_BH1_R_s, color = 'purple', s=100, label='Gaia BH1* (~ 9.62M⊙)') #purple dot
 plt.xscale('log')  # Log scale for x-axis to show Sgr A*
 plt.xlabel('Black Hole Mass (Solar Masses)')
